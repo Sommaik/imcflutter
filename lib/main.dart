@@ -1,8 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:imcflutter/appintro/ui/app_intro_page.dart';
 import 'package:imcflutter/counter/bloc/bloc.dart';
 import 'package:imcflutter/counter/ui/ui.dart';
+import 'package:imcflutter/login/ui/login_page.dart';
+import 'package:imcflutter/register/ui/register_page.dart';
 import 'package:imcflutter/shared/bloc/bloc.dart';
 import 'package:imcflutter/shared/my_bloc_delegate.dart';
 
@@ -50,9 +53,12 @@ class UnAuthorizeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Center(
-        child: Text('Unauthorize app'),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => AppIntroPage(),
+        '/login': (context) => LoginPage(),
+        '/register': (context) => RegisterPage(),
+      },
     );
   }
 }
