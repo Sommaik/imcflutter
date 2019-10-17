@@ -15,4 +15,9 @@ class CounterRunningState extends CounterState {
 
   @override
   List<Object> get props => [counter];
+
+  @override
+  String toString() {
+    return "[CounterRunningState] counter:$counter";
+  }
 }

@@ -11,4 +11,9 @@ class IncrementEvent extends CounterEvent {
 
   @override
   List<Object> get props => [value];
+
+  @override
+  String toString() {
+    return "[IncrementEvent] value:$value";
+  }
 }
