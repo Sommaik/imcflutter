@@ -11,8 +11,11 @@ void main() {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(
-          builder: (context) => AppBloc(),
+        BlocProvider<AppBloc>(
+          builder: (context) => AppBloc()
+            ..dispatch(
+              InitailAppEvent(),
+            ),
         )
       ],
       child: BlocBuilder<AppBloc, AppState>(
@@ -46,7 +49,11 @@ class LoadingApp extends StatelessWidget {
 class UnAuthorizeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return null;
+    return MaterialApp(
+      home: Center(
+        child: Text('Unauthorize app'),
+      ),
+    );
   }
 }
 
