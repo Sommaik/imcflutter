@@ -10,7 +10,7 @@ class AppIntroPage extends StatelessWidget {
       title: "ERASER",
       description:
           "Allow miles wound place the leave had. To sitting subject no improve studied limited",
-      // pathImage: "images/photo_eraser.png",
+      pathImage: "images/angular-logo.png",
       backgroundColor: Color(0xfff5a623),
     ));
     return IntroSlider(
