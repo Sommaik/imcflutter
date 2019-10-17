@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:imcflutter/counter/bloc/bloc.dart';
 
 class MyCounterPage extends StatelessWidget {
-  int counter = 0;
-
   @override
   Widget build(BuildContext context) {
+    CounterBloc _bloc = BlocProvider.of<CounterBloc>(context);
+
+    return BlocBuilder<CounterBloc, CounterState>(
+      builder: (context, state) {
+        if (state is CounterRunningState) {
+          return buildMainBody(_bloc, state.counter);
+        } else {
+          return Text('Invalid state');
+        }
+      },
+    );
+  }
+
+  Scaffold buildMainBody(CounterBloc bloc, int counter) {
     return Scaffold(
       appBar: AppBar(
         title: Text('My First App.... '),
@@ -21,8 +35,7 @@ class MyCounterPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          counter += 1;
-          print('numer = $counter');
+          bloc.dispatch(IncrementEvent());
         },
       ),
     );
