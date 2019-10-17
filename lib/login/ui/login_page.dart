@@ -26,7 +26,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
               FlatButton(
                 child: Text("Register new account"),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/register');
+                },
               )
             ],
           ),
