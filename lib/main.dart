@@ -78,7 +78,6 @@ class MyFullCounterState extends State<MyFullCounterPage> {
         },
       ),
     );
-    ;
   }
 }
 
