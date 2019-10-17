@@ -13,7 +13,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     if (event is IncrementEvent) {
       int _current = (currentState as CounterRunningState).counter;
 
-      yield CounterRunningState(counter: _current + 1);
+      yield CounterRunningState(counter: _current + event.value);
     }
   }
 }
