@@ -1,9 +1,14 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imcflutter/counter/bloc/bloc.dart';
 import 'package:imcflutter/counter/ui/ui.dart';
+import 'package:imcflutter/shared/my_bloc_delegate.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  BlocSupervisor.delegate = MyBlocDelegate();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
