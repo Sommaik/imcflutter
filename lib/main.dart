@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imcflutter/appintro/ui/app_intro_page.dart';
 import 'package:imcflutter/counter/bloc/bloc.dart';
 import 'package:imcflutter/counter/ui/ui.dart';
+import 'package:imcflutter/login/bloc/login_bloc.dart';
 import 'package:imcflutter/login/ui/login_page.dart';
 import 'package:imcflutter/register/ui/register_page.dart';
 import 'package:imcflutter/shared/bloc/bloc.dart';
@@ -52,6 +53,7 @@ class LoadingApp extends StatelessWidget {
 class UnAuthorizeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AppBloc appBloc = BlocProvider.of<AppBloc>(context);
     return MaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -59,7 +61,10 @@ class UnAuthorizeApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => AppIntroPage(),
-        '/login': (context) => LoginPage(),
+        '/login': (context) => BlocProvider<LoginBloc>(
+              builder: (context) => LoginBloc(appBloc: appBloc),
+              child: LoginPage(),
+            ),
         '/register': (context) => RegisterPage(),
       },
     );
