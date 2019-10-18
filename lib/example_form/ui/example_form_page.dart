@@ -23,20 +23,37 @@ class _ExampleFormPageState extends State<ExampleFormPage> {
         child: Form(
           child: ListView(
             children: <Widget>[
-              Radio(
-                value: 'M',
-                groupValue: sex,
-              ),
-              Text('Male'),
-              Radio(
-                value: 'F',
-                groupValue: sex,
-              ),
-              Text('Female')
+              buildRadioField(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Row buildRadioField() {
+    return Row(
+      children: <Widget>[
+        Radio(
+          value: 'M',
+          groupValue: sex,
+          onChanged: (value) {
+            setState(() {
+              sex = value;
+            });
+          },
+        ),
+        Text('Male'),
+        Radio(
+            value: 'F',
+            groupValue: sex,
+            onChanged: (value) {
+              setState(() {
+                sex = value;
+              });
+            }),
+        Text('Female')
+      ],
     );
   }
 }
