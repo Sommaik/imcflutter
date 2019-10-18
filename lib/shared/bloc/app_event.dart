@@ -13,3 +13,8 @@ class AuthorizeAppEvent extends AppEvent {
   @override
   List<Object> get props => [];
 }
+
+class SignOutAppEvent extends AppEvent {
+  @override
+  List<Object> get props => [];
+}
