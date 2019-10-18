@@ -10,6 +10,7 @@ import 'package:imcflutter/login/bloc/login_bloc.dart';
 import 'package:imcflutter/login/ui/login_page.dart';
 import 'package:imcflutter/post/bloc/bloc.dart';
 import 'package:imcflutter/post/ui/post_page.dart';
+import 'package:imcflutter/register/bloc/register_bloc.dart';
 import 'package:imcflutter/register/ui/register_page.dart';
 import 'package:imcflutter/shared/bloc/bloc.dart';
 import 'package:imcflutter/shared/my_bloc_delegate.dart';
@@ -69,7 +70,10 @@ class UnAuthorizeApp extends StatelessWidget {
               builder: (context) => LoginBloc(appBloc: appBloc),
               child: LoginPage(),
             ),
-        '/register': (context) => RegisterPage(),
+        '/register': (context) => BlocProvider<RegisterBloc>(
+              builder: (context) => RegisterBloc(),
+              child: RegisterPage(),
+            ),
       },
     );
   }

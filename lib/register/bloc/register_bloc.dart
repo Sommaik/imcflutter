@@ -20,7 +20,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     FirebaseAuth _auth = FirebaseAuth.instance;
     try {
       await _auth.createUserWithEmailAndPassword(
-          email: event.email, password: event.password);
+        email: event.email,
+        password: event.password,
+      );
       yield RegisterSuccessState();
     } catch (e) {
       yield RegisterFailState(message: e);
