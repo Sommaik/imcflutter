@@ -9,6 +9,8 @@ class ExampleFormPage extends StatefulWidget {
 class _ExampleFormPageState extends State<ExampleFormPage> {
   String sex = 'M';
   bool over18 = false;
+  List<String> provices = ['', 'BKK', 'Outbound'];
+  String provice = 'BKK';
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,31 @@ class _ExampleFormPageState extends State<ExampleFormPage> {
             children: <Widget>[
               buildRadioField(),
               buildCheckBoxField(),
+              buildSelectField(),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  InputDecorator buildSelectField() {
+    return InputDecorator(
+      decoration: InputDecoration(labelText: 'Province'),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton(
+          value: provice,
+          onChanged: (value) {
+            setState(() {
+              provice = value;
+            });
+          },
+          items: provices
+              .map((value) => DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  ))
+              .toList(),
         ),
       ),
     );
