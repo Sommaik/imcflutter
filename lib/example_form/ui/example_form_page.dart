@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:imcflutter/shared/widget/app_menu.dart';
 import 'package:intl/intl.dart';
 
@@ -14,6 +17,7 @@ class _ExampleFormPageState extends State<ExampleFormPage> {
   List<String> provices = ['', 'BKK', 'Outbound'];
   String provice = 'BKK';
   final _format = DateFormat('dd/MM/yyyy');
+  File _avatar;
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +37,26 @@ class _ExampleFormPageState extends State<ExampleFormPage> {
               buildCheckBoxField(),
               buildSelectField(),
               buildDateField(),
+              _avatar == null
+                  ? RaisedButton(
+                      onPressed: () {
+                        onChooseImage();
+                      },
+                      child: Text('Choose Avatar'),
+                    )
+                  : Image.file(_avatar)
             ],
           ),
         ),
       ),
     );
+  }
+
+  onChooseImage() async {
+    File image = await ImagePicker.pickImage(source: ImageSource.camera);
+    setState(() {
+      _avatar = image;
+    });
   }
 
   DateTimeField buildDateField() {

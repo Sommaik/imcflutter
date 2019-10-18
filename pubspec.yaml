@@ -32,6 +32,7 @@ dependencies:
   intro_slider: ^2.2.8
   datetime_picker_formfield: ^0.4.3
   intl: ^0.15.8
+  image_picker: ^0.6.1+8
 
 dev_dependencies:
   flutter_test:
