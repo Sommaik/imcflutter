@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imcflutter/appintro/ui/app_intro_page.dart';
 import 'package:imcflutter/counter/bloc/bloc.dart';
 import 'package:imcflutter/counter/ui/ui.dart';
+import 'package:imcflutter/example_form/ui/example_form_page.dart';
 import 'package:imcflutter/home/ui/home_page.dart';
 import 'package:imcflutter/login/bloc/login_bloc.dart';
 import 'package:imcflutter/login/ui/login_page.dart';
@@ -87,7 +88,8 @@ class MyApp extends StatelessWidget {
           '/': (context) => HomePage(),
           '/counter': (context) => MyCounterPage(),
           '/full_counter': (context) => MyFullCounterPage(),
-          '/my_home': (context) => MyHomePage()
+          '/my_home': (context) => MyHomePage(),
+          '/example_form': (context) => ExampleFormPage(),
         },
       ),
     );

@@ -40,6 +40,13 @@ class AppMenu extends StatelessWidget {
           },
         ),
         ListTile(
+          title: Text('Example Form'),
+          leading: Icon(Icons.library_books),
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed('/example_form');
+          },
+        ),
+        ListTile(
           title: Text('Signout'),
           onTap: () {
             // TODO: signout event
