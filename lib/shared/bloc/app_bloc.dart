@@ -13,10 +13,18 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     if (event is InitailAppEvent) {
       yield* _mapInitailApp();
     }
+    if (event is AuthorizeAppEvent) {
+      yield* _mapAuthorizeApp();
+    }
   }
 
   Stream<AppState> _mapInitailApp() async* {
     await Future.delayed(Duration(milliseconds: 2000));
     yield UnAuthorizedState();
+  }
+
+  Stream<AppState> _mapAuthorizeApp() async* {
+    await Future.delayed(Duration(milliseconds: 2000));
+    yield AuthorizedState();
   }
 }

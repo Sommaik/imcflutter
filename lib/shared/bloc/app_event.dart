@@ -8,3 +8,8 @@ class InitailAppEvent extends AppEvent {
   @override
   List<Object> get props => [];
 }
+
+class AuthorizeAppEvent extends AppEvent {
+  @override
+  List<Object> get props => [];
+}
