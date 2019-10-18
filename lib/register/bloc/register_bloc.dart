@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import './bloc.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
@@ -16,6 +17,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
 
   Stream<RegisterState> _mapRegistering(RegisteringEvent event) async* {
-    yield RegisterSuccessState();
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    try {
+      await _auth.createUserWithEmailAndPassword(
+          email: event.email, password: event.password);
+      yield RegisterSuccessState();
+    } catch (e) {
+      yield RegisterFailState(message: e);
+    }
   }
 }

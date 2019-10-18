@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "632014858843",
+    "firebase_url": "https://imcflutter.firebaseio.com",
+    "project_id": "imcflutter",
+    "storage_bucket": "imcflutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632014858843:android:8428e770efd646f74aed7e",
+        "android_client_info": {
+          "package_name": "com.example.imcflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632014858843-chm77chab5uljhbdn8f6q8dttu8dal48.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRKvnscnUuecq7kmM4mYkk_w7nWTUDIlA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632014858843-chm77chab5uljhbdn8f6q8dttu8dal48.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
