@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imcflutter/appintro/ui/app_intro_page.dart';
 import 'package:imcflutter/counter/bloc/bloc.dart';
 import 'package:imcflutter/counter/ui/ui.dart';
+import 'package:imcflutter/home/ui/home_page.dart';
 import 'package:imcflutter/login/bloc/login_bloc.dart';
 import 'package:imcflutter/login/ui/login_page.dart';
 import 'package:imcflutter/register/ui/register_page.dart';
@@ -81,7 +82,11 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MyCounterPage(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => HomePage(),
+          '/counter': (context) => MyCounterPage()
+        },
       ),
     );
   }
