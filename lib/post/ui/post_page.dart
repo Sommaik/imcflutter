@@ -27,7 +27,9 @@ class PostPage extends StatelessWidget {
   }
 
   Widget buildLoding() {
-    return CircularProgressIndicator();
+    return Center(
+      child: CircularProgressIndicator(),
+    );
   }
 
   Widget buildList(List<Post> posts) {

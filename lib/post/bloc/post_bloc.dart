@@ -1,6 +1,9 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:bloc/bloc.dart';
+import 'package:imcflutter/post/model/post.dart';
 import './bloc.dart';
+import 'package:http/http.dart' as http;
 
 class PostBloc extends Bloc<PostEvent, PostState> {
   @override
@@ -16,6 +19,10 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   }
 
   Stream<PostState> _mapLoadList() async* {
-    // TODO: load data from http
+    http.Response resp =
+        await http.get("https://jsonplaceholder.typicode.com/posts");
+    List<dynamic> list = json.decode(resp.body);
+    List<Post> posts = list.map((json) => Post.fromJson(json)).toList();
+    yield PostListState(posts: posts);
   }
 }

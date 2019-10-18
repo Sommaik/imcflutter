@@ -4,4 +4,13 @@ class Post {
   final String title;
   final String body;
   Post({this.id, this.userId, this.title, this.body});
+
+  factory Post.fromJson(Map<String, dynamic> json) {
+    return Post(
+      title: json['title'],
+      body: json['body'],
+      id: json['id'],
+      userId: json['userId'],
+    );
+  }
 }
