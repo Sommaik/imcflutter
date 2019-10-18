@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imcflutter/counter/bloc/bloc.dart';
+import 'package:imcflutter/shared/widget/app_menu.dart';
 
 class MyCounterPage extends StatelessWidget {
   @override
@@ -22,6 +23,9 @@ class MyCounterPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('My First App.... '),
+      ),
+      drawer: Drawer(
+        child: AppMenu(),
       ),
       body: Center(
         child: Text(

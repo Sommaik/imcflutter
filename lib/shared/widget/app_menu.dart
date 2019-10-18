@@ -3,23 +3,35 @@ import 'package:flutter/material.dart';
 class AppMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListView(
-        children: <Widget>[
-          ListTile(
-            title: Text('Counter'),
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed('/counter');
-            },
+    return ListView(
+      children: <Widget>[
+        DrawerHeader(
+          child: Text('Drawer Header'),
+          decoration: BoxDecoration(
+            color: Colors.blue,
           ),
-          ListTile(
-            title: Text('Signout'),
-            onTap: () {
-              // TODO: signout event
-            },
-          )
-        ],
-      ),
+        ),
+        ListTile(
+          title: Text('Home'),
+          leading: Icon(Icons.home),
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed('/');
+          },
+        ),
+        ListTile(
+          title: Text('Counter'),
+          leading: Icon(Icons.timer),
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed('/counter');
+          },
+        ),
+        ListTile(
+          title: Text('Signout'),
+          onTap: () {
+            // TODO: signout event
+          },
+        )
+      ],
     );
   }
 }
