@@ -85,7 +85,9 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => HomePage(),
-          '/counter': (context) => MyCounterPage()
+          '/counter': (context) => MyCounterPage(),
+          '/full_counter': (context) => MyFullCounterPage(),
+          '/my_home': (context) => MyHomePage()
         },
       ),
     );

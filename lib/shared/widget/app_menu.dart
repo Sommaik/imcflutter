@@ -26,6 +26,20 @@ class AppMenu extends StatelessWidget {
           },
         ),
         ListTile(
+          title: Text('Full Counter'),
+          leading: Icon(Icons.timer),
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed('/full_counter');
+          },
+        ),
+        ListTile(
+          title: Text('My Home'),
+          leading: Icon(Icons.access_alarm),
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed('/my_home');
+          },
+        ),
+        ListTile(
           title: Text('Signout'),
           onTap: () {
             // TODO: signout event
