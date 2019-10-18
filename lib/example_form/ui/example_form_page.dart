@@ -7,7 +7,8 @@ class ExampleFormPage extends StatefulWidget {
 }
 
 class _ExampleFormPageState extends State<ExampleFormPage> {
-  String sex;
+  String sex = 'M';
+  bool over18 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,27 @@ class _ExampleFormPageState extends State<ExampleFormPage> {
           child: ListView(
             children: <Widget>[
               buildRadioField(),
+              buildCheckBoxField(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Row buildCheckBoxField() {
+    return Row(
+      children: <Widget>[
+        Checkbox(
+          onChanged: (value) {
+            setState(() {
+              over18 = value;
+            });
+          },
+          value: over18,
+        ),
+        Text('Over 18 years old.')
+      ],
     );
   }
 
