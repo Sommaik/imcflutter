@@ -1,5 +1,7 @@
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:imcflutter/shared/widget/app_menu.dart';
+import 'package:intl/intl.dart';
 
 class ExampleFormPage extends StatefulWidget {
   @override
@@ -11,6 +13,7 @@ class _ExampleFormPageState extends State<ExampleFormPage> {
   bool over18 = false;
   List<String> provices = ['', 'BKK', 'Outbound'];
   String provice = 'BKK';
+  final _format = DateFormat('dd/MM/yyyy');
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +32,25 @@ class _ExampleFormPageState extends State<ExampleFormPage> {
               buildRadioField(),
               buildCheckBoxField(),
               buildSelectField(),
+              buildDateField(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  DateTimeField buildDateField() {
+    return DateTimeField(
+      decoration: InputDecoration(labelText: 'Birth Date'),
+      format: _format,
+      onShowPicker: (context, currentValue) {
+        return showDatePicker(
+            context: context,
+            firstDate: DateTime(1900),
+            initialDate: currentValue ?? DateTime.now(),
+            lastDate: DateTime(2100));
+      },
     );
   }
 
@@ -48,10 +66,12 @@ class _ExampleFormPageState extends State<ExampleFormPage> {
             });
           },
           items: provices
-              .map((value) => DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  ))
+              .map(
+                (value) => DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                ),
+              )
               .toList(),
         ),
       ),
