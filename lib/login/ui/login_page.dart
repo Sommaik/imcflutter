@@ -45,6 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text("Login"),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
+                        _formKey.currentState.save();
                         loginBloc.dispatch(
                           LogingInEvent(email: email, password: password),
                         );

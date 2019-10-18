@@ -12,4 +12,9 @@ class LogingInEvent extends LoginEvent {
 
   @override
   List<Object> get props => [email, password];
+
+  @override
+  String toString() {
+    return '[LogingInEvent] email:$email, password:$password';
+  }
 }
