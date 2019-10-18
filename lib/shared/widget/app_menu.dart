@@ -47,6 +47,13 @@ class AppMenu extends StatelessWidget {
           },
         ),
         ListTile(
+          title: Text('Post'),
+          leading: Icon(Icons.poll),
+          onTap: () {
+            Navigator.of(context).pushReplacementNamed('/post');
+          },
+        ),
+        ListTile(
           title: Text('Signout'),
           onTap: () {
             // TODO: signout event

@@ -8,6 +8,8 @@ import 'package:imcflutter/example_form/ui/example_form_page.dart';
 import 'package:imcflutter/home/ui/home_page.dart';
 import 'package:imcflutter/login/bloc/login_bloc.dart';
 import 'package:imcflutter/login/ui/login_page.dart';
+import 'package:imcflutter/post/bloc/bloc.dart';
+import 'package:imcflutter/post/ui/post_page.dart';
 import 'package:imcflutter/register/ui/register_page.dart';
 import 'package:imcflutter/shared/bloc/bloc.dart';
 import 'package:imcflutter/shared/my_bloc_delegate.dart';
@@ -90,6 +92,12 @@ class MyApp extends StatelessWidget {
           '/full_counter': (context) => MyFullCounterPage(),
           '/my_home': (context) => MyHomePage(),
           '/example_form': (context) => ExampleFormPage(),
+          '/post': (context) {
+            return BlocProvider(
+              builder: (context) => PostBloc()..dispatch(LoadListEvent()),
+              child: PostPage(),
+            );
+          }
         },
       ),
     );
