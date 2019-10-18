@@ -17,33 +17,48 @@ class _LoginPageState extends State<LoginPage> {
     LoginBloc loginBloc = BlocProvider.of<LoginBloc>(context);
 
     return BlocBuilder<LoginBloc, LoginState>(
-      builder: (context, state) => Scaffold(
-        body: Container(
-          padding: EdgeInsets.all(20),
-          child: Form(
-            key: _formKey,
-            child: ListView(
-              children: <Widget>[
-                Image.asset('images/angular-logo.png'),
-                buildEmailField(),
-                buildPasswordField(),
-                RaisedButton(
-                  child: Text("Login"),
-                  onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      loginBloc.dispatch(
-                        LogingInEvent(email: email, password: password),
-                      );
-                    }
-                  },
-                ),
-                FlatButton(
-                  child: Text("Register new account"),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/register');
-                  },
-                )
-              ],
+      builder: (context, state) => BlocListener<LoginBloc, LoginState>(
+        listener: (context, state) {
+          if (state is LoginFailState) {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('Login'),
+                  content: Text('Login Fail..'),
+                );
+              },
+            );
+          }
+        },
+        child: Scaffold(
+          body: Container(
+            padding: EdgeInsets.all(20),
+            child: Form(
+              key: _formKey,
+              child: ListView(
+                children: <Widget>[
+                  Image.asset('images/angular-logo.png'),
+                  buildEmailField(),
+                  buildPasswordField(),
+                  RaisedButton(
+                    child: Text("Login"),
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        loginBloc.dispatch(
+                          LogingInEvent(email: email, password: password),
+                        );
+                      }
+                    },
+                  ),
+                  FlatButton(
+                    child: Text("Register new account"),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/register');
+                    },
+                  )
+                ],
+              ),
             ),
           ),
         ),
