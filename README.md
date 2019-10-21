@@ -20,3 +20,9 @@ samples, guidance on mobile development, and a full API reference.
 ```
 https://github.com/Sommaik/imcflutter
 ```
+
+# link to config fb login
+
+```
+https://pub.dev/packages/flutter_facebook_login#-readme-tab-
+```

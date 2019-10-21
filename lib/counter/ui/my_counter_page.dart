@@ -39,7 +39,7 @@ class MyCounterPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          bloc.dispatch(IncrementEvent(value: 5));
+          bloc.add(IncrementEvent(value: 5));
         },
       ),
     );

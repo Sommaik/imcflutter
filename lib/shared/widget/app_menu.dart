@@ -3,9 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:imcflutter/shared/bloc/bloc.dart';
 
 class AppMenu extends StatelessWidget {
+  AppBloc getAppBloc(context) {
+    return BlocProvider.of<AppBloc>(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    AppBloc appBloc = BlocProvider.of<AppBloc>(context);
     return ListView(
       children: <Widget>[
         DrawerHeader(
@@ -60,7 +63,7 @@ class AppMenu extends StatelessWidget {
           title: Text('Sign Out'),
           leading: Icon(Icons.exit_to_app),
           onTap: () {
-            appBloc.dispatch(SignOutAppEvent());
+            getAppBloc(context).add(SignOutAppEvent());
           },
         )
       ],

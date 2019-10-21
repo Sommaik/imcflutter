@@ -18,3 +18,13 @@ class LogingInEvent extends LoginEvent {
     return '[LogingInEvent] email:$email, password:$password';
   }
 }
+
+class FacebookLoginEvent extends LoginEvent {
+  @override
+  List<Object> get props => [];
+}
+
+class GoogleLoginEvent extends LoginEvent {
+  @override
+  List<Object> get props => [];
+}

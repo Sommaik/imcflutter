@@ -12,10 +12,12 @@ class _LoginPageState extends State<LoginPage> {
   String email;
   String password;
 
+  LoginBloc getLoginBloc(context) {
+    return BlocProvider.of<LoginBloc>(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    LoginBloc loginBloc = BlocProvider.of<LoginBloc>(context);
-
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) => BlocListener<LoginBloc, LoginState>(
         listener: (context, state) {
@@ -25,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
               builder: (context) {
                 return AlertDialog(
                   title: Text('Login'),
-                  content: Text('Login Fail..'),
+                  content: Text('Login Fail ${state.message}'),
                 );
               },
             );
@@ -41,29 +43,57 @@ class _LoginPageState extends State<LoginPage> {
                   Image.asset('images/angular-logo.png'),
                   buildEmailField(),
                   buildPasswordField(),
-                  RaisedButton(
-                    child: Text("Login"),
-                    onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        _formKey.currentState.save();
-                        loginBloc.dispatch(
-                          LogingInEvent(email: email, password: password),
-                        );
-                      }
-                    },
-                  ),
-                  FlatButton(
-                    child: Text("Register new account"),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/register');
-                    },
-                  )
+                  buildLoginButton(context),
+                  buildRegisterButton(context),
+                  buildFacebookButton(context),
+                  buildGoogleButton(context),
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  RaisedButton buildGoogleButton(BuildContext context) {
+    return RaisedButton(
+      child: Text("Login with google"),
+      onPressed: () {
+        getLoginBloc(context).add(GoogleLoginEvent());
+      },
+    );
+  }
+
+  RaisedButton buildFacebookButton(BuildContext context) {
+    return RaisedButton(
+      child: Text("Login with facebook"),
+      onPressed: () {
+        getLoginBloc(context).add(FacebookLoginEvent());
+      },
+    );
+  }
+
+  FlatButton buildRegisterButton(BuildContext context) {
+    return FlatButton(
+      child: Text("Register new account"),
+      onPressed: () {
+        Navigator.of(context).pushNamed('/register');
+      },
+    );
+  }
+
+  RaisedButton buildLoginButton(BuildContext context) {
+    return RaisedButton(
+      child: Text("Login"),
+      onPressed: () {
+        if (_formKey.currentState.validate()) {
+          _formKey.currentState.save();
+          getLoginBloc(context).add(
+            LogingInEvent(email: email, password: password),
+          );
+        }
+      },
     );
   }
 

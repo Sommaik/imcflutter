@@ -12,9 +12,12 @@ class _RegisterPageState extends State<RegisterPage> {
   String email;
   String password;
 
+  RegisterBloc getRegisterBloc(context) {
+    return BlocProvider.of<RegisterBloc>(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    RegisterBloc registerBloc = BlocProvider.of<RegisterBloc>(context);
     return BlocBuilder<RegisterBloc, RegisterState>(
       builder: (context, state) => BlocListener<RegisterBloc, RegisterState>(
         listener: (context, state) {
@@ -49,7 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         _formKey.currentState.save();
-                        registerBloc.dispatch(
+                        getRegisterBloc(context).add(
                           RegisteringEvent(
                             email: email,
                             password: password,

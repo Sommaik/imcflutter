@@ -22,7 +22,7 @@ void main() {
       providers: [
         BlocProvider<AppBloc>(
           builder: (context) => AppBloc()
-            ..dispatch(
+            ..add(
               InitailAppEvent(),
             ),
         )
@@ -56,18 +56,26 @@ class LoadingApp extends StatelessWidget {
 }
 
 class UnAuthorizeApp extends StatelessWidget {
+  AppBloc getAppBloc(context) {
+    return BlocProvider.of<AppBloc>(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    AppBloc appBloc = BlocProvider.of<AppBloc>(context);
     return MaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        buttonTheme: ButtonThemeData(
+          buttonColor: Colors.deepPurple, //  <-- dark color
+          textTheme:
+              ButtonTextTheme.primary, //  <-- this auto selects the right color
+        ),
       ),
       initialRoute: '/',
       routes: {
         '/': (context) => AppIntroPage(),
         '/login': (context) => BlocProvider<LoginBloc>(
-              builder: (context) => LoginBloc(appBloc: appBloc),
+              builder: (context) => LoginBloc(appBloc: getAppBloc(context)),
               child: LoginPage(),
             ),
         '/register': (context) => BlocProvider<RegisterBloc>(
@@ -98,7 +106,7 @@ class MyApp extends StatelessWidget {
           '/example_form': (context) => ExampleFormPage(),
           '/post': (context) {
             return BlocProvider(
-              builder: (context) => PostBloc()..dispatch(LoadListEvent()),
+              builder: (context) => PostBloc()..add(LoadListEvent()),
               child: PostPage(),
             );
           }
